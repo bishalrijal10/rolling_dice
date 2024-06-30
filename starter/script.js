@@ -29,6 +29,14 @@ function toggleActivePlayer() {
 diceEl.classList.add('hidden');
 let currentScore = 0;
 
+const scoreUpdate = function (currentScore) {
+  if (currentActivePlayer === ActivePlayer.ac1) {
+    currentScore0.textContent = currentScore;
+  } else {
+    currentScore1.textContent = currentScore;
+  }
+};
+
 rollButton.addEventListener('click', function () {
   const dice = Math.trunc(Math.random() * 6) + 1;
 
@@ -37,18 +45,10 @@ rollButton.addEventListener('click', function () {
   // updating user based on value of dice roll
   if (dice !== 1) {
     currentScore += dice;
-    if (currentActivePlayer === ActivePlayer.ac1) {
-      currentScore0.textContent = currentScore;
-    } else {
-      currentScore1.textContent = currentScore;
-    }
+    scoreUpdate(currentScore);
   } else {
     currentScore = 0;
-    if (currentActivePlayer === ActivePlayer.ac1) {
-      currentScore0.textContent = currentScore;
-    } else {
-      currentScore1.textContent = currentScore;
-    }
+    scoreUpdate(currentScore);
     toggleActivePlayer();
   }
 });
