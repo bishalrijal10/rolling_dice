@@ -11,6 +11,20 @@ const holdButton = document.querySelector('.btn--hold');
 
 score0El.textContent = 0;
 score1El.textContent = 0;
+const ActivePlayer = {
+  ac1: 0,
+  ac2: 1,
+};
+
+let currentActivePlayer = ActivePlayer.ac1;
+
+function toggleActivePlayer() {
+  currentActivePlayer =
+    currentActivePlayer === ActivePlayer.ac1
+      ? ActivePlayer.ac2
+      : ActivePlayer.ac1;
+  return currentActivePlayer;
+}
 
 diceEl.classList.add('hidden');
 let currentScore = 0;
@@ -20,10 +34,21 @@ rollButton.addEventListener('click', function () {
 
   diceEl.classList.remove('hidden');
   diceEl.src = `dice-${dice}.png`;
-
+  // updating user based on value of dice roll
   if (dice !== 1) {
     currentScore += dice;
-    currentScore0.textContent = currentScore;
+    if (currentActivePlayer === ActivePlayer.ac1) {
+      currentScore0.textContent = currentScore;
+    } else {
+      currentScore1.textContent = currentScore;
+    }
   } else {
+    currentScore = 0;
+    if (currentActivePlayer === ActivePlayer.ac1) {
+      currentScore0.textContent = currentScore;
+    } else {
+      currentScore1.textContent = currentScore;
+    }
+    toggleActivePlayer();
   }
 });
