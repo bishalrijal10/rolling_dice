@@ -17,12 +17,15 @@ const ActivePlayer = {
 };
 
 let currentActivePlayer = ActivePlayer.ac1;
+let total_score_player1 = 0;
+let total_score_player2 = 0;
 
 function toggleActivePlayer() {
   currentActivePlayer =
     currentActivePlayer === ActivePlayer.ac1
       ? ActivePlayer.ac2
       : ActivePlayer.ac1;
+  currentScore = 0;
   return currentActivePlayer;
 }
 
@@ -34,6 +37,21 @@ const scoreUpdate = function (currentScore) {
     currentScore0.textContent = currentScore;
   } else {
     currentScore1.textContent = currentScore;
+  }
+};
+
+const holdScoreUpdate = function (currentScore) {
+  if (currentActivePlayer === ActivePlayer.ac1 && currentScore !== 0) {
+    total_score_player1 += currentScore;
+    score0El.textContent = total_score_player1;
+  } else if (currentActivePlayer === ActivePlayer.ac2 && currentScore !== 0) {
+    total_score_player2 += currentScore;
+    score1El.textContent = total_score_player2;
+  }
+  if (currentActivePlayer === ActivePlayer.ac1 && currentScore === 0) {
+    score0El.textContent = 0;
+  } else if (currentActivePlayer === ActivePlayer.ac2 && currentScore === 0) {
+    score1El.textContent = 0;
   }
 };
 
@@ -49,6 +67,12 @@ rollButton.addEventListener('click', function () {
   } else {
     currentScore = 0;
     scoreUpdate(currentScore);
+    holdScoreUpdate(currentScore);
     toggleActivePlayer();
   }
+});
+
+holdButton.addEventListener('click', function () {
+  holdScoreUpdate(currentScore);
+  toggleActivePlayer();
 });
