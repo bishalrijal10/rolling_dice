@@ -89,11 +89,13 @@ rollButton.addEventListener('click', function () {
   if (dice !== 1) {
     currentScore += dice;
     scoreUpdate(currentScore);
+    holdButton.classList.remove('hidden');
   } else {
     currentScore = 0;
     scoreUpdate(currentScore);
     holdScoreUpdate(currentScore);
     toggleActivePlayer();
+    holdButton.classList.add('hidden');
   }
 });
 
