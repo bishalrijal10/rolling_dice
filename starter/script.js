@@ -32,6 +32,17 @@ function toggleActivePlayer() {
 diceEl.classList.add('hidden');
 let currentScore = 0;
 
+const isWinner = function (totalScore1, totalScore2) {
+  if (totalScore1 === 100) {
+    score0El.textContent = 'WINNER';
+  } else if (totalScore2 === 100) {
+    score1El.textContent = 'WINNER';
+  }
+  diceEl.classList.add('hidden');
+  rollButton.disabled = true;
+  holdButton.disabled = true;
+};
+
 const scoreUpdate = function (currentScore) {
   if (currentActivePlayer === ActivePlayer.ac1) {
     currentScore0.textContent = currentScore;
@@ -41,17 +52,31 @@ const scoreUpdate = function (currentScore) {
 };
 
 const holdScoreUpdate = function (currentScore) {
-  if (currentActivePlayer === ActivePlayer.ac1 && currentScore !== 0) {
+  if (
+    currentActivePlayer === ActivePlayer.ac1 &&
+    currentScore !== 0 &&
+    total_score_player1 <= 100
+  ) {
     total_score_player1 += currentScore;
     score0El.textContent = total_score_player1;
-  } else if (currentActivePlayer === ActivePlayer.ac2 && currentScore !== 0) {
+  } else if (
+    currentActivePlayer === ActivePlayer.ac2 &&
+    currentScore !== 0 &&
+    total_score_player2 <= 100
+  ) {
     total_score_player2 += currentScore;
     score1El.textContent = total_score_player2;
   }
+  if (total_score_player1 >= 100 || total_score_player2 >= 100) {
+    isWinner(total_score_player1, total_score_player2);
+  }
+
   if (currentActivePlayer === ActivePlayer.ac1 && currentScore === 0) {
     score0El.textContent = 0;
+    total_score_player1 = 0;
   } else if (currentActivePlayer === ActivePlayer.ac2 && currentScore === 0) {
     score1El.textContent = 0;
+    total_score_player2 = 0;
   }
 };
 
@@ -74,5 +99,6 @@ rollButton.addEventListener('click', function () {
 
 holdButton.addEventListener('click', function () {
   holdScoreUpdate(currentScore);
+  currentScore = 0;
   toggleActivePlayer();
 });
