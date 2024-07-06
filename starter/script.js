@@ -33,9 +33,9 @@ diceEl.classList.add('hidden');
 let currentScore = 0;
 
 const isWinner = function (totalScore1, totalScore2) {
-  if (totalScore1 === 100) {
+  if (totalScore1 >= 100) {
     score0El.textContent = 'WINNER';
-  } else if (totalScore2 === 100) {
+  } else if (totalScore2 >= 100) {
     score1El.textContent = 'WINNER';
   }
   diceEl.classList.add('hidden');
