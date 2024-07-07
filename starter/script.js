@@ -8,6 +8,8 @@ const diceEl = document.querySelector('.dice');
 const newGameButton = document.querySelector('.btn--new');
 const rollButton = document.querySelector('.btn--roll');
 const holdButton = document.querySelector('.btn--hold');
+const activeVisual0 = document.querySelector('.player--0');
+const activeVisual1 = document.querySelector('.player--1');
 
 score0El.textContent = 0;
 score1El.textContent = 0;
@@ -19,6 +21,7 @@ const ActivePlayer = {
 let currentActivePlayer = ActivePlayer.ac1;
 let total_score_player1 = 0;
 let total_score_player2 = 0;
+let currentVisualStatus = 0;
 
 function toggleActivePlayer() {
   currentActivePlayer =
@@ -31,6 +34,17 @@ function toggleActivePlayer() {
 
 diceEl.classList.add('hidden');
 let currentScore = 0;
+
+const resetGame = function () {
+  currentScore = 0;
+  total_score_player1 = 0;
+  total_score_player2 = 0;
+  currentScore0.textContent = 0;
+  currentScore1.textContent = 0;
+  score0El.textContent = 0;
+  score1El.textContent = 0;
+  currentActivePlayer = ActivePlayer.ac1;
+};
 
 const isWinner = function (totalScore1, totalScore2) {
   if (totalScore1 >= 100) {
@@ -80,6 +94,18 @@ const holdScoreUpdate = function (currentScore) {
   }
 };
 
+const activeShow = function (currentVisualStatus) {
+  if (currentVisualStatus === 0) {
+    activeVisual0.classList.add('player--active');
+    activeVisual1.classList.remove('player--active');
+  } else {
+    activeVisual1.classList.add('player--active');
+    activeVisual0.classList.remove('player--active');
+  }
+  console.log(currentVisualStatus);
+  console.log('Hello_Yoo');
+};
+
 rollButton.addEventListener('click', function () {
   const dice = Math.trunc(Math.random() * 6) + 1;
 
@@ -90,11 +116,13 @@ rollButton.addEventListener('click', function () {
     currentScore += dice;
     scoreUpdate(currentScore);
     holdButton.classList.remove('hidden');
+    activeShow(currentVisualStatus);
   } else {
     currentScore = 0;
     scoreUpdate(currentScore);
     holdScoreUpdate(currentScore);
-    toggleActivePlayer();
+    currentVisualStatus = toggleActivePlayer();
+    activeShow(currentVisualStatus);
     holdButton.classList.add('hidden');
   }
 });
@@ -102,5 +130,12 @@ rollButton.addEventListener('click', function () {
 holdButton.addEventListener('click', function () {
   holdScoreUpdate(currentScore);
   currentScore = 0;
-  toggleActivePlayer();
+  currentVisualStatus = toggleActivePlayer();
+  activeShow(currentVisualStatus);
+});
+
+newGameButton.addEventListener('click', function () {
+  resetGame();
+  holdButton.classList.add('hidden');
+  activeShow(0);
 });
