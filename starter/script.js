@@ -132,6 +132,7 @@ holdButton.addEventListener('click', function () {
   currentScore = 0;
   currentVisualStatus = toggleActivePlayer();
   activeShow(currentVisualStatus);
+  holdButton.classList.add('hidden');
 });
 
 newGameButton.addEventListener('click', function () {
