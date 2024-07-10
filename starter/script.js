@@ -10,6 +10,8 @@ const rollButton = document.querySelector('.btn--roll');
 const holdButton = document.querySelector('.btn--hold');
 const activeVisual0 = document.querySelector('.player--0');
 const activeVisual1 = document.querySelector('.player--1');
+const rulesOfGame = document.querySelector('.rule');
+const rulesOkButton = document.querySelector('.rules_btn');
 
 score0El.textContent = 0;
 score1El.textContent = 0;
@@ -139,4 +141,8 @@ newGameButton.addEventListener('click', function () {
   resetGame();
   holdButton.classList.add('hidden');
   activeShow(0);
+});
+
+rulesOkButton.addEventListener('click', function () {
+  rulesOfGame.classList.add('hidden');
 });

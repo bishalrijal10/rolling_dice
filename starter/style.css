@@ -140,7 +140,7 @@ main {
 }
 
 .btn:active {
-  transform: translate(-50%, 3px);
+  transform: translate(-40%, 2px);
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
 }
 
@@ -170,37 +170,50 @@ main {
 .hidden {
   display: none;
 }
-.rules{
+.rule {
   font-weight: 900;
   font-size: larger;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 85vh;
-  width: 80rem;
-  backdrop-filter: blur(15px) ;
+  height: 68vh;
+  width: 80vh;
+  backdrop-filter: blur(15px);
   background-color: rgba(240, 221, 186, 0.858);
   z-index: 1;
   margin: 20px;
   padding: 20px;
-  overflow: hidden;
   border-radius: 15px;
-  p{
+  p {
     font-size: x-large;
     font-weight: bold;
     color: rgba(139, 17, 17, 0.642);
   }
-  dl,dt{
+  dl,
+  dt {
     padding: 5px;
-    margin: 5px;
+    margin: 10px;
   }
-
+  dd {
+    font-size: 12px;
+    color: rgb(0, 0, 0);
+    margin: 3px;
+  }
 }
-.rules_btn{
-  border-radius: 20%;
+.rules_btn {
+  border-radius: 25%;
   border: none;
-  background-color: aquamarine;
-  padding: 6px;
+  background-color: rgba(120, 51, 37, 0.734);
+  padding: 10px;
   margin: 10px;
+  color: white;
+}
+.rules_btn:active {
+  transform: translateX(-50%, 3px);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+}
+.rule_no {
+  background-color: #c787d3d2;
+  border-radius: 10px;
 }
