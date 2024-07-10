@@ -170,14 +170,17 @@ main {
 .hidden {
   display: none;
 }
+.disp_flex{
+  display: flex;
+}
 .rule {
   font-weight: 900;
   font-size: larger;
-  display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 68vh;
+  height: 90vh;
   width: 80vh;
   backdrop-filter: blur(15px);
   background-color: rgba(240, 221, 186, 0.858);
@@ -193,7 +196,7 @@ main {
   dl,
   dt {
     padding: 5px;
-    margin: 10px;
+    margin: 5px;
   }
   dd {
     font-size: 12px;

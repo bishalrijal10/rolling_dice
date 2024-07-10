@@ -19,6 +19,7 @@ const ActivePlayer = {
   ac1: 0,
   ac2: 1,
 };
+rulesOfGame.classList.add('disp_flex')
 
 let currentActivePlayer = ActivePlayer.ac1;
 let total_score_player1 = 0;
@@ -144,5 +145,6 @@ newGameButton.addEventListener('click', function () {
 });
 
 rulesOkButton.addEventListener('click', function () {
+  rulesOfGame.classList.remove('disp_flex');
   rulesOfGame.classList.add('hidden');
 });
