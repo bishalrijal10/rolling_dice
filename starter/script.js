@@ -47,6 +47,7 @@ const resetGame = function () {
   score0El.textContent = 0;
   score1El.textContent = 0;
   currentActivePlayer = ActivePlayer.ac1;
+  rollButton.disabled = false;
 };
 
 const isWinner = function (totalScore1, totalScore2) {
@@ -148,3 +149,5 @@ rulesOkButton.addEventListener('click', function () {
   rulesOfGame.classList.remove('disp_flex');
   rulesOfGame.classList.add('hidden');
 });
+
+

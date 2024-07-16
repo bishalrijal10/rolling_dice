@@ -16,8 +16,10 @@ body {
   font-weight: 400;
   height: 100vh;
   color: #333;
-  background-image: linear-gradient(to top left, #753682 0%, #bf2e34 100%);
+  background-image: linear-gradient(to top left, #753682 0%, #c22f34 100%);
   display: flex;
+  flex-wrap: wrap;
+  flex-direction: row-reverse;
   align-items: center;
   justify-content: center;
 }
@@ -34,6 +36,10 @@ main {
   border-radius: 9px;
   overflow: hidden;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  padding: 40px;
 }
 
 .player {
@@ -43,6 +49,7 @@ main {
   flex-direction: column;
   align-items: center;
   transition: all 0.75s;
+  border-radius: 30px;
 }
 
 /* ELEMENTS */
@@ -54,6 +61,7 @@ main {
   word-spacing: 2px;
   font-weight: 300;
   margin-bottom: 1rem;
+  padding: 10px;
 }
 
 .score {
@@ -61,6 +69,7 @@ main {
   font-weight: 300;
   color: #c7365f;
   margin-bottom: auto;
+  padding: 15px;
 }
 
 .player--active {
@@ -111,8 +120,8 @@ main {
   font-size: 1.8rem;
   text-transform: uppercase;
   cursor: pointer;
-  font-weight: 400;
-  transition: all 0.2s;
+  font-weight: 400;transition: all 0.2s;
+  
 
   background-color: white;
   background-color: rgba(255, 255, 255, 0.6);
@@ -219,4 +228,19 @@ main {
 .rule_no {
   background-color: #c787d3d2;
   border-radius: 10px;
+}
+.help_button{
+  border-radius: 25%;
+  border: none;
+  background-color: rgb(255, 0, 0);
+  padding: 10px;
+  margin: 10px 30px;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+.help_button:active {
+  transform: translate(-40%, 3px);
+  transition: all 0.8s;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
 }
