@@ -12,6 +12,7 @@ const activeVisual0 = document.querySelector('.player--0');
 const activeVisual1 = document.querySelector('.player--1');
 const rulesOfGame = document.querySelector('.rule');
 const rulesOkButton = document.querySelector('.rules_btn');
+const helpButton = document.querySelector('.help_button')
 
 score0El.textContent = 0;
 score1El.textContent = 0;
@@ -148,6 +149,14 @@ newGameButton.addEventListener('click', function () {
 rulesOkButton.addEventListener('click', function () {
   rulesOfGame.classList.remove('disp_flex');
   rulesOfGame.classList.add('hidden');
+  helpButton.classList.remove('hidden');
+
 });
+
+helpButton.addEventListener('click', function(){
+  rulesOfGame.classList.remove('hidden');
+  rulesOfGame.classList.add('disp_flex');
+  helpButton.classList.add('hidden');
+})
 
 
